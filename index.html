@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>🎬</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="dist/css/style.css">
+</head>
+
+<body>
+
+  <main id="app" class="container">
+
+    <section class="search">
+      <div class="split-items">
+        <input type="text" 
+               class="search__input" 
+               placeholder="Search for your favorite show" 
+               v-model="query" 
+               @keyup.enter="getShows(query)" 
+               autofocus 
+        />
+
+        <button type="button" 
+                class="search__btn" 
+                @click="getShows(query)">Search</button>  
+      </div>
+
+      <div class="search__suggestions">
+        <em>Need tips? Girls, Game of Thrones, Stranger Things?</em>
+      </div>
+    </section>
+
+    <ul class="search-results">
+      <li class="search-result" v-for="show in shows">
+        <div class="split-items">
+          <figure v-if="show.show.image">
+            <img v-bind:src="show.show.image.medium ? show.show.image.medium : show.show.image.original" 
+                 class="search-result__image" 
+            />
+          </figure>
+
+          <div class="search-result__body">
+            <h1 v-if="show.show.name" 
+                class="search-result__title">
+                {{ show.show.name }}
+            </h1>
+            <div v-if="show.show.summary" 
+                 v-html="show.show.summary" 
+                 class="search-result__summary">
+            </div>
+
+            <div class="split-items">
+              <div>
+                <span v-if="show.show.rating.average" 
+                      class="rating" 
+                      v-bind:class="[show.show.rating.average >= 9 ? 'rating--top' : '']">
+                      Rating: {{ show.show.rating.average }}
+                </span>
+                <span v-else class="rating rating--none">Rating: n/a</span>
+              </div>
+
+              <div>
+                <span v-if="show.show.network">Network: {{ show.show.network.name }}</span>
+                <span v-else>Network: n/a</span>
+              </div>
+
+              <div v-if="show.show.externals.imdb || show.show.officialSite">
+                <a v-if="show.show.externals.imdb" 
+                   :href="imdbUrl + show.show.externals.imdb" 
+                   class="external-link">
+                   Imdb
+                </a>
+                <a v-if="show.show.officialSite" 
+                   :href="show.show.officialSite" 
+                   class="external-link">
+                   Official site
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+  </main>
+
+  <script src="dist/js/app.js"></script>
+
+</body>
+</html>
