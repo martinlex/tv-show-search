@@ -1,0 +1,141 @@
+/* Shortest reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Global */
+body {
+  /* No support for IE: */
+  --color-white:       #fff;
+  --color-light-grey:  #eee;
+  --color-medium-grey: #888;
+  --color-gold:        #fd0;
+  --color-dark-gold:   #fb0;
+
+  --spacing-default: 4px;
+
+  background-color: var(--color-light-grey);
+}
+
+input[type=text],
+button {
+  font-size: 16px;
+  padding: calc(3 * var(--spacing-default)) calc(5 * var(--spacing-default));
+}
+
+input[type=text] {
+  border: none;
+  border-bottom: 1px solid var(--color-medium-grey);
+}
+
+button {
+  background-color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--color-dark-gold);
+}
+
+.external-link {
+  border-bottom: 1px solid var(--color-dark-gold);
+  color: var(--color-dark-gold);
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin: 2px;
+  padding: var(--spacing-default);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+/* Helper classes */
+.split-items {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* App */
+.container {
+  background-color: var(--color-white);
+  min-height: 100vh;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: calc(7 * var(--spacing-default));
+}
+
+.search {}
+
+.search__input {
+  width: calc(100% - 110px);
+}
+
+.search__btn {
+  width: 100px;
+}
+
+.search__suggestions {
+  margin-top: calc(2 * var(--spacing-default));
+}
+
+.search-results {
+  margin-top: calc(15 * var(--spacing-default));
+}
+
+.search-result {
+  list-style-type: none;
+  margin-bottom: calc(8 * var(--spacing-default));
+}
+
+.search-result__image {
+  height: 150px;
+  margin-right: calc(4 * var(--spacing-default));
+}
+
+.search-result__body {}
+
+.search-result__title {
+  font-size: 28px;
+  font-weight: normal;
+  margin-bottom: calc(3 * var(--spacing-default));
+}
+
+.search-result__summary {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  display: block;
+  display: -webkit-box;
+  font-size: 18px;
+  max-height: 70px; /* 3 x 18 x 1.3 */
+  line-height: 1.3;
+  margin-bottom: calc(4 * var(--spacing-default));
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* p renders from the api */
+.search-result__summary p {
+  color: #555;
+}
+
+.search-result__summary i {
+  display: none;
+}
+
+.rating {}
+
+.rating--none {
+  color: var(--color-medium-grey);
+}
+
+.rating--top {
+  background-color: var(--color-gold);
+  padding: 2px 6px;
+}
