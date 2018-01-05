@@ -33,6 +33,11 @@
     </section>
 
     <ul class="search-results">
+      <div v-if="renderedQuery"
+           class="search-results__query">
+        Your search for &rdquo;{{ renderedQuery }}&rdquo; rendered these results:
+      </div>
+
       <li class="search-result" v-for="show in shows">
         <div class="split-items">
           <figure v-if="show.show.image">
