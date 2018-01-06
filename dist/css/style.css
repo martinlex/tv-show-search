@@ -18,10 +18,12 @@ body {
   --spacing-default: 4px;
 
   background-color: var(--color-light-grey);
+  font-family: 'Rubik', sans-serif;
 }
 
 input[type=text],
 button {
+  font-family: 'Rubik', sans-serif;
   font-size: 16px;
   padding: calc(3 * var(--spacing-default)) calc(5 * var(--spacing-default));
 }
@@ -56,7 +58,6 @@ button:hover {
 
 /* Helper classes */
 .split-items {
-  align-items: center;
   display: flex;
   justify-content: space-between;
 }
@@ -116,9 +117,9 @@ button:hover {
   -webkit-line-clamp: 3;
   display: block;
   display: -webkit-box;
-  font-size: 18px;
-  max-height: 70px; /* 3 x 18 x 1.3 */
-  line-height: 1.3;
+  font-size: 17px;
+  max-height: 72px; /* 3 x 17 x 1.4 */
+  line-height: 1.4;
   margin-bottom: calc(4 * var(--spacing-default));
   overflow: hidden;
   text-overflow: ellipsis;
